@@ -1,5 +1,5 @@
--- GemGlitz Luxury Jewelry E-Commerce Database Schema
--- Compatible with MySQL / MariaDB (XAMPP)
+-- GemGlitz Luxury Jewelry E-Commerce Database Schema & Import Script
+-- Compatible with MySQL / MariaDB (phpMyAdmin / XAMPP)
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -185,7 +185,7 @@ CREATE TABLE `newsletter` (
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- =========================================================
--- INITIAL SEED DATA
+-- INITIAL SEED DATA WITH REAL PRODUCT PICTURES
 -- =========================================================
 
 -- USERS
@@ -197,38 +197,38 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phon
 
 -- CATEGORIES
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `image_url`) VALUES
-(1, 'Diamond Rings', 'diamond-rings', 'Exquisite handcrafted solitaire & halo diamond rings forged in 18K gold and platinum.', 'ring_cat.svg'),
-(2, 'Luxury Necklaces', 'luxury-necklaces', 'Statement gold pendants, diamond chokers, and royal sapphire necklaces.', 'necklace_cat.svg'),
-(3, 'Royal Bracelets', 'royal-bracelets', 'Bangles, tennis bracelets, and diamond cuffs designed for royalty.', 'bracelet_cat.svg'),
-(4, 'Elegant Earrings', 'elegant-earrings', 'Graceful studs, drop earrings, and diamond hoops crafted to shine.', 'earring_cat.svg'),
-(5, 'Luxury Watches', 'luxury-watches', 'Timeless mechanical horology featuring Swiss movements and diamond dials.', 'watch_cat.svg'),
-(6, 'High Solitaires', 'high-solitaires', 'Rare GIA certified colorless diamond single stone creations.', 'solitaire_cat.svg');
+(1, 'Diamond Rings', 'diamond-rings', 'Exquisite handcrafted solitaire & halo diamond rings forged in 18K gold and platinum.', 'ring_cat.jpg'),
+(2, 'Luxury Necklaces', 'luxury-necklaces', 'Statement gold pendants, diamond chokers, and royal sapphire necklaces.', 'necklace_cat.jpg'),
+(3, 'Royal Bracelets', 'royal-bracelets', 'Bangles, tennis bracelets, and diamond cuffs designed for royalty.', 'bracelet_cat.jpg'),
+(4, 'Elegant Earrings', 'elegant-earrings', 'Graceful studs, drop earrings, and diamond hoops crafted to shine.', 'earring_cat.jpg'),
+(5, 'Luxury Watches', 'luxury-watches', 'Timeless mechanical horology featuring Swiss movements and diamond dials.', 'watch_cat.jpg'),
+(6, 'High Solitaires', 'high-solitaires', 'Rare GIA certified colorless diamond single stone creations.', 'solitaire_cat.jpg');
 
--- PRODUCTS
+-- PRODUCTS WITH HIGH QUALITY PICTURES
 INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `sku`, `short_description`, `description`, `price`, `discount_price`, `stock`, `metal_type`, `gemstone_type`, `is_featured`, `is_bestseller`, `is_trending`, `main_image`, `gallery_images`, `rating`, `review_count`) VALUES
-(1, 1, 'The Empress Royal Solitaire Ring', 'empress-royal-solitaire-ring', 'GG-RNG-001', '3.5 Carat D-Flawless Cushion Diamond Ring in 18K Yellow Gold', 'Forged by our master jewelers in Paris, The Empress Ring features a transcendent 3.5 carat D-Flawless cushion-cut center diamond enveloped by micro-pave diamonds along an 18K yellow gold band. A statement of pure luxury.', 12500.00, 11200.00, 5, '18K Yellow Gold', 'Diamond', 1, 1, 1, 'product_ring_1.svg', '["product_ring_1.svg", "product_ring_2.svg"]', 5.00, 12),
+(1, 1, 'The Empress Royal Solitaire Ring', 'empress-royal-solitaire-ring', 'GG-RNG-001', '3.5 Carat D-Flawless Cushion Diamond Ring in 18K Yellow Gold', 'Forged by our master jewelers in Paris, The Empress Ring features a transcendent 3.5 carat D-Flawless cushion-cut center diamond enveloped by micro-pave diamonds along an 18K yellow gold band. A statement of pure luxury.', 12500.00, 11200.00, 5, '18K Yellow Gold', 'Diamond', 1, 1, 1, 'ring_1.jpg', '["ring_1.jpg", "ring_2.jpg"]', 5.00, 12),
 
-(2, 1, 'Elysian Eternity Halo Ring', 'elysian-eternity-halo-ring', 'GG-RNG-002', '2.0 Carat Round Brilliant Diamond in Platinum Band', 'Surrounded by a double halo of brilliant pave diamonds, this platinum ring captivates with effortless brilliance and timeless romantic allure.', 8900.00, NULL, 8, 'Platinum', 'Diamond', 1, 0, 1, 'product_ring_2.svg', '["product_ring_2.svg", "product_ring_1.svg"]', 4.90, 8),
+(2, 1, 'Elysian Eternity Halo Ring', 'elysian-eternity-halo-ring', 'GG-RNG-002', '2.0 Carat Round Brilliant Diamond in Platinum Band', 'Surrounded by a double halo of brilliant pave diamonds, this platinum ring captivates with effortless brilliance and timeless romantic allure.', 8900.00, NULL, 8, 'Platinum', 'Diamond', 1, 0, 1, 'ring_2.jpg', '["ring_2.jpg", "ring_1.jpg"]', 4.90, 8),
 
-(3, 2, 'The Celestia Diamond Pendant', 'celestia-diamond-pendant', 'GG-NCK-001', 'Cascade 18K White Gold Necklace with Pear Diamond Drop', 'Inspired by celestial constellations, this 18K white gold necklace features a graduating line of brilliant round diamonds leading to a breathtaking 2.2 Carat pear-cut focal gem.', 14800.00, 13500.00, 3, 'White Gold', 'Diamond', 1, 1, 0, 'product_necklace_1.svg', '["product_necklace_1.svg", "product_necklace_2.svg"]', 5.00, 19),
+(3, 2, 'The Celestia Diamond Pendant', 'celestia-diamond-pendant', 'GG-NCK-001', 'Cascade 18K White Gold Necklace with Pear Diamond Drop', 'Inspired by celestial constellations, this 18K white gold necklace features a graduating line of brilliant round diamonds leading to a breathtaking 2.2 Carat pear-cut focal gem.', 14800.00, 13500.00, 3, 'White Gold', 'Diamond', 1, 1, 0, 'necklace_1.jpg', '["necklace_1.jpg", "necklace_2.jpg"]', 5.00, 19),
 
-(4, 2, 'Royal Emerald Riviera Choker', 'royal-emerald-riviera-choker', 'GG-NCK-002', 'Deep Colombian Emeralds surrounded by marquise diamonds', 'An extraordinary riviera necklace displaying 15 carats of vivid green Colombian emeralds paired with marquise cut diamonds set in 18K yellow gold.', 28000.00, NULL, 2, '18K Yellow Gold', 'Emerald', 1, 0, 1, 'product_necklace_2.svg', '["product_necklace_2.svg", "product_necklace_1.svg"]', 5.00, 6),
+(4, 2, 'Royal Emerald Riviera Choker', 'royal-emerald-riviera-choker', 'GG-NCK-002', 'Deep Colombian Emeralds surrounded by marquise diamonds', 'An extraordinary riviera necklace displaying 15 carats of vivid green Colombian emeralds paired with marquise cut diamonds set in 18K yellow gold.', 28000.00, NULL, 2, '18K Yellow Gold', 'Emerald', 1, 0, 1, 'necklace_2.jpg', '["necklace_2.jpg", "necklace_1.jpg"]', 5.00, 6),
 
-(5, 3, 'Majestic Imperial Tennis Bracelet', 'majestic-imperial-tennis-bracelet', 'GG-BRC-001', '10.0 Carats Total Weight Round Cut Diamonds in Platinum', 'A iconic tennis bracelet boasting 42 perfectly matched VVS clarity diamonds seamlessly linked in solid platinum. Fluid, comfortable, and scintillating.', 16500.00, 14999.00, 6, 'Platinum', 'Diamond', 1, 1, 1, 'product_bracelet_1.svg', '["product_bracelet_1.svg", "product_bracelet_2.svg"]', 4.95, 24),
+(5, 3, 'Majestic Imperial Tennis Bracelet', 'majestic-imperial-tennis-bracelet', 'GG-BRC-001', '10.0 Carats Total Weight Round Cut Diamonds in Platinum', 'A iconic tennis bracelet boasting 42 perfectly matched VVS clarity diamonds seamlessly linked in solid platinum. Fluid, comfortable, and scintillating.', 16500.00, 14999.00, 6, 'Platinum', 'Diamond', 1, 1, 1, 'bracelet_1.jpg', '["bracelet_1.jpg", "bracelet_2.jpg"]', 4.95, 24),
 
-(6, 3, 'Rose Gold Aurora Bangle Cuff', 'rose-gold-aurora-bangle-cuff', 'GG-BRC-002', '18K Rose Gold Bangle set with Pink Diamonds', 'Crafted in luminous 18K rose gold, this hinged bangle features pave pink and white diamonds arranged in an elegant geometric aurora motif.', 9200.00, NULL, 7, 'Rose Gold', 'Diamond', 0, 0, 1, 'product_bracelet_2.svg', '["product_bracelet_2.svg", "product_bracelet_1.svg"]', 4.80, 5),
+(6, 3, 'Rose Gold Aurora Bangle Cuff', 'rose-gold-aurora-bangle-cuff', 'GG-BRC-002', '18K Rose Gold Bangle set with Pink Diamonds', 'Crafted in luminous 18K rose gold, this hinged bangle features pave pink and white diamonds arranged in an elegant geometric aurora motif.', 9200.00, NULL, 7, 'Rose Gold', 'Diamond', 0, 0, 1, 'bracelet_2.jpg', '["bracelet_2.jpg", "bracelet_1.jpg"]', 4.80, 5),
 
-(7, 4, 'Aura Sapphire Drop Earrings', 'aura-sapphire-drop-earrings', 'GG-ERG-001', 'Royal Blue Ceylon Sapphires with Diamond Halo in White Gold', 'Featuring 4 carats of vivid blue Ceylon sapphires encased in diamond halos, suspended from delicate white gold drop hooks.', 11000.00, 9800.00, 4, 'White Gold', 'Sapphire', 1, 1, 0, 'product_earring_1.svg', '["product_earring_1.svg", "product_earring_2.svg"]', 5.00, 15),
+(7, 4, 'Aura Sapphire Drop Earrings', 'aura-sapphire-drop-earrings', 'GG-ERG-001', 'Royal Blue Ceylon Sapphires with Diamond Halo in White Gold', 'Featuring 4 carats of vivid blue Ceylon sapphires encased in diamond halos, suspended from delicate white gold drop hooks.', 11000.00, 9800.00, 4, 'White Gold', 'Sapphire', 1, 1, 0, 'earring_1.jpg', '["earring_1.jpg", "earring_2.jpg"]', 5.00, 15),
 
-(8, 4, 'Radiant Marquise Diamond Studs', 'radiant-marquise-diamond-studs', 'GG-ERG-002', 'Classic 1.5 CT TW Marquise Diamonds in 18K Yellow Gold', 'Sophisticated marquise-cut solitaire diamond studs in classic 4-prong 18K gold settings. A essential staple for refined collections.', 6400.00, NULL, 12, '18K Yellow Gold', 'Diamond', 0, 1, 0, 'product_earring_2.svg', '["product_earring_2.svg", "product_earring_1.svg"]', 4.88, 11),
+(8, 4, 'Radiant Marquise Diamond Studs', 'radiant-marquise-diamond-studs', 'GG-ERG-002', 'Classic 1.5 CT TW Marquise Diamonds in 18K Yellow Gold', 'Sophisticated marquise-cut solitaire diamond studs in classic 4-prong 18K gold settings. A essential staple for refined collections.', 6400.00, NULL, 12, '18K Yellow Gold', 'Diamond', 0, 1, 0, 'earring_2.jpg', '["earring_2.jpg", "earring_1.jpg"]', 4.88, 11),
 
-(9, 5, 'Chronos Tourbillon Diamond Watch', 'chronos-tourbillon-diamond-watch', 'GG-WTC-001', 'Swiss Automatic Skeleton Watch with Baguette Diamond Bezel', 'Masterpiece of fine watchmaking. Automatic flying tourbillon movement with sapphire crystal back and 48 baguette diamonds set in platinum casing.', 45000.00, 39900.00, 1, 'Platinum', 'Diamond', 1, 1, 1, 'product_watch_1.svg', '["product_watch_1.svg", "product_watch_2.svg"]', 5.00, 4),
+(9, 5, 'Chronos Tourbillon Diamond Watch', 'chronos-tourbillon-diamond-watch', 'GG-WTC-001', 'Swiss Automatic Skeleton Watch with Baguette Diamond Bezel', 'Masterpiece of fine watchmaking. Automatic flying tourbillon movement with sapphire crystal back and 48 baguette diamonds set in platinum casing.', 45000.00, 39900.00, 1, 'Platinum', 'Diamond', 1, 1, 1, 'watch_1.jpg', '["watch_1.jpg", "watch_2.jpg"]', 5.00, 4),
 
-(10, 5, 'Gilded Heritage Moonphase Watch', 'gilded-heritage-moonphase-watch', 'GG-WTC-002', '18K Rose Gold Mechanical Watch with Alligator Leather Strap', 'Classic precision moonphase timepiece housed in polished 18K rose gold with a hand-stitched Italian alligator leather strap.', 22500.00, NULL, 3, 'Rose Gold', 'Solitaire', 1, 0, 0, 'product_watch_2.svg', '["product_watch_2.svg", "product_watch_1.svg"]', 4.90, 7),
+(10, 5, 'Gilded Heritage Moonphase Watch', 'gilded-heritage-moonphase-watch', 'GG-WTC-002', '18K Rose Gold Mechanical Watch with Alligator Leather Strap', 'Classic precision moonphase timepiece housed in polished 18K rose gold with a hand-stitched Italian alligator leather strap.', 22500.00, NULL, 3, 'Rose Gold', 'Solitaire', 1, 0, 0, 'watch_2.jpg', '["watch_2.jpg", "watch_1.jpg"]', 4.90, 7),
 
-(11, 6, 'Crown Jewel 5ct Round Solitaire', 'crown-jewel-5ct-round-solitaire', 'GG-SLT-001', 'GIA Certified 5.0 Carat D Flawless Solitaire Ring', 'The pinnacle of fine gemology. A single 5-carat round brilliant cut diamond mounted on an ultra-slim 18K gold band.', 65000.00, 59000.00, 1, '18K Yellow Gold', 'Solitaire', 1, 1, 1, 'product_solitaire_1.svg', '["product_solitaire_1.svg", "product_solitaire_1.svg"]', 5.00, 9),
+(11, 6, 'Crown Jewel 5ct Round Solitaire', 'crown-jewel-5ct-round-solitaire', 'GG-SLT-001', 'GIA Certified 5.0 Carat D Flawless Solitaire Ring', 'The pinnacle of fine gemology. A single 5-carat round brilliant cut diamond mounted on an ultra-slim 18K gold band.', 65000.00, 59000.00, 1, '18K Yellow Gold', 'Solitaire', 1, 1, 1, 'solitaire_1.jpg', '["solitaire_1.jpg", "solitaire_2.jpg"]', 5.00, 9),
 
-(12, 6, 'Ocean Heart Blue Diamond Solitaire', 'ocean-heart-blue-diamond-solitaire', 'GG-SLT-002', 'Rare 3.0 CT Fancy Deep Blue Diamond in Platinum', 'Extremely rare natural blue heart-shaped diamond surrounded by micropave platinum setting. A collector item of extraordinary distinction.', 85000.00, NULL, 1, 'Platinum', 'Diamond', 1, 0, 1, 'product_solitaire_2.svg', '["product_solitaire_2.svg", "product_solitaire_1.svg"]', 5.00, 3);
+(12, 6, 'Ocean Heart Blue Diamond Solitaire', 'ocean-heart-blue-diamond-solitaire', 'GG-SLT-002', 'Rare 3.0 CT Fancy Deep Blue Diamond in Platinum', 'Extremely rare natural blue heart-shaped diamond surrounded by micropave platinum setting. A collector item of extraordinary distinction.', 85000.00, NULL, 1, 'Platinum', 'Diamond', 1, 0, 1, 'solitaire_2.jpg', '["solitaire_2.jpg", "solitaire_1.jpg"]', 5.00, 3);
 
 -- COUPONS
 INSERT INTO `coupons` (`id`, `code`, `discount_percent`, `min_order_amount`, `max_discount`, `expiry_date`, `status`) VALUES
