@@ -61,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert Order Tracking Record
     $est_delivery = date('Y-m-d', strtotime('+4 days'));
-    $stmt = $pdo->prepare("INSERT INTO tracking (order_id, status_title, description, courier_name, tracking_number, estimated_delivery) VALUES (?, 'Order Confirmed', 'Your order has been logged in GemGlitz Vault and is awaiting armored packaging.', 'Royal Gold Express', 'RGE-' . rand(100000,999999) . '-NY', ?)");
-    $stmt->execute([$order_id, $est_delivery]);
+    $tracking_num = 'RGE-' . rand(100000, 999999) . '-NY';
+    $stmt = $pdo->prepare("INSERT INTO tracking (order_id, status_title, description, courier_name, tracking_number, estimated_delivery) VALUES (?, 'Order Confirmed', 'Your order has been logged in GemGlitz Vault and is awaiting armored packaging.', 'Royal Gold Express', ?, ?)");
+    $stmt->execute([$order_id, $tracking_num, $est_delivery]);
 
     // Clear Cart & Coupon Session
     $stmt = $pdo->prepare("DELETE FROM cart WHERE user_id = ?");
