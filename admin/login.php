@@ -64,7 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="form-group">
         <label class="form-label" style="color:#CCC;">Password</label>
-        <input type="password" name="password" value="Admin@123" class="form-control" style="background:#1A1A1A; border-color:#333; color:#FFF;" required>
+        <div style="position:relative;">
+          <input type="password" id="admin-pass" name="password" value="Admin@123" class="form-control" style="background:#1A1A1A; border-color:#333; color:#FFF; padding-right:2.8rem;" required>
+          <button type="button" onclick="togglePasswordVisibility('admin-pass', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--primary-gold); cursor:pointer; font-size:1.1rem; padding:0;" title="Toggle Password Visibility">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
       </div>
 
       <button type="submit" class="btn btn-primary" style="width:100%; padding:0.9rem; font-size:0.95rem;">
@@ -74,6 +79,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   </div>
 </div>
+
+<script>
+function togglePasswordVisibility(inputId, btnElement) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const icon = btnElement.querySelector('i');
+  if (input.type === 'password') {
+    input.type = 'text';
+    if (icon) {
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    }
+  } else {
+    input.type = 'password';
+    if (icon) {
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  }
+}
+</script>
 
 </body>
 </html>
