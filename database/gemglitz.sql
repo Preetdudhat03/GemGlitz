@@ -195,9 +195,12 @@ CREATE TABLE `newsletter` (
 -- SEED DATA
 -- ---------------------------------------------------------
 
+-- USERS
+-- Admin password: Admin@123
+-- Customer password: Customer@123
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address`, `city`, `state`, `zip`, `role`) VALUES
 (1, 'GemGlitz', 'Admin', 'admin@gemglitz.com', '$2y$10$frjvNhekaAG3dnNMTwBDnumPY86BG1JohWE8BuEtkR4JG9P.EioKm', '+1 800 555 0199', '740 5th Avenue, Suite 1200', 'New York', 'NY', '10019', 'admin'),
-(2, 'Sophia', 'Vanderbilt', 'customer@gemglitz.com', '$2y$10$qlDl/IVTVhHBwyGXDbwctucKB.FbN.tlOJlPXMM3c6euv4.GoJ9tG', '+1 212 555 0148', '432 Park Avenue, Apt 64A', 'New York', 'NY', '10022', 'customer');
+(2, 'Keya', 'Dudhat', 'keyadudhat@gmail.com', '$2y$10$qlDl/IVTVhHBwyGXDbwctucKB.FbN.tlOJlPXMM3c6euv4.GoJ9tG', '+91 98765 43210', 'Shri Bhagubhai Mafatlal Polytechnic, Vile Parle (W)', 'Mumbai', 'Maharashtra', '400056', 'customer');
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `image_url`) VALUES
 (1, 'Diamond Rings', 'diamond-rings', 'Exquisite handcrafted solitaire & halo diamond rings forged in 18K gold and platinum.', 'ring_cat.jpg'),
@@ -238,7 +241,7 @@ INSERT INTO `coupons` (`id`, `code`, `discount_percent`, `min_order_amount`, `ma
 (3, 'WELCOME100', 5.00, 500.00, 500.00, '2030-12-31', 1);
 
 INSERT INTO `orders` (`id`, `order_number`, `user_id`, `total_amount`, `discount_amount`, `shipping_fee`, `tax_amount`, `grand_total`, `payment_method`, `payment_status`, `order_status`, `shipping_name`, `shipping_email`, `shipping_phone`, `shipping_address`, `shipping_city`, `shipping_zip`, `created_at`) VALUES
-(1, 'GG-ORD-88291', 2, 12500.00, 1250.00, 0.00, 562.50, 11812.50, 'Credit Card', 'Paid', 'Shipped', 'Sophia Vanderbilt', 'customer@gemglitz.com', '+1 212 555 0148', '432 Park Avenue, Apt 64A', 'New York', '10022', '2026-08-01 10:15:00');
+(1, 'GG-ORD-88291', 2, 12500.00, 1250.00, 0.00, 562.50, 11812.50, 'Credit Card', 'Paid', 'Shipped', 'Keya Dudhat', 'keyadudhat@gmail.com', '+91 98765 43210', 'Shri Bhagubhai Mafatlal Polytechnic, Vile Parle (W)', 'Mumbai', '400056', '2026-08-01 10:15:00');
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `price`, `quantity`, `total`) VALUES
 (1, 1, 1, 'The Empress Royal Solitaire Ring', 12500.00, 1, 12500.00);
