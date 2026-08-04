@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#E5E5E5"/>
+      <stop offset="100%" stop-color="#C8A96A"/>
+    </linearGradient>
+    <radialGradient id="bgGrad2" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#151520"/>
+      <stop offset="100%" stop-color="#08080C"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bgGrad2)"/>
+  <circle cx="300" cy="300" r="220" fill="none" stroke="url(#goldGrad2)" stroke-width="2" opacity="0.3"/>
+  <ellipse cx="300" cy="340" rx="130" ry="70" fill="none" stroke="url(#goldGrad2)" stroke-width="14"/>
+  <!-- Double Halo Cushion Diamond -->
+  <rect x="230" y="160" width="140" height="140" rx="30" fill="none" stroke="url(#goldGrad2)" stroke-width="4"/>
+  <rect x="245" y="175" width="110" height="110" rx="20" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <polygon points="300,190 335,230 300,270 265,230" fill="#EBF5FF" opacity="0.95"/>
+  <path d="M 170,160 L 175,175 L 190,180 L 175,185 L 170,200 L 165,185 L 150,180 L 165,175 Z" fill="#D4AF37"/>
+  <text x="300" y="520" text-anchor="middle" font-family="'Playfair Display', serif" font-size="22" fill="#C8A96A" letter-spacing="3">ELYSIAN HALO COLLECTION</text>
+</svg>
