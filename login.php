@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <!-- Demo Accounts Box -->
       <div style="margin-top:2rem; padding:1rem; background:rgba(200, 169, 106, 0.1); border-radius:var(--radius-sm); border:1px dashed var(--primary-gold); font-size:0.8rem;">
         <strong>Demo Login Credentials:</strong><br>
-        &bull; Customer: <code>customer@gemglitz.com</code> / <code>Customer@123</code><br>
+        &bull; Customer: <code>keyadudhat@gmail.com</code> / <code>Customer@123</code><br>
         &bull; Admin: <code>admin@gemglitz.com</code> / <code>Admin@123</code>
       </div>
 
