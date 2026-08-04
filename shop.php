@@ -77,11 +77,11 @@ $categories_list = $pdo->query("SELECT * FROM categories WHERE status = 1")->fet
 ?>
 
 <!-- Shop Header Banner -->
-<section style="background: linear-gradient(135deg, #111, #1C1917); color: #FFF; padding: 4rem 0 3rem; text-align: center; border-bottom: 1px solid var(--border-color);">
+<section style="background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(5,5,5,0.98)), url('assets/images/hero_bg.svg') center/cover; color: #FFF; padding: 4.5rem 0 3.5rem; text-align: center; border-bottom: 1px solid var(--border-color);">
   <div class="container">
     <span class="section-subtitle">Private Collection</span>
     <h1 style="font-size: 3rem; color: #FFF; margin-bottom: 0.5rem;">Haute Joaillerie Vault</h1>
-    <p style="color: #AAA;">Discover extraordinary pieces handcrafted to perfection.</p>
+    <p style="color: #CCCCCC;">Discover extraordinary pieces handcrafted to perfection.</p>
   </div>
 </section>
 
@@ -92,9 +92,9 @@ $categories_list = $pdo->query("SELECT * FROM categories WHERE status = 1")->fet
       
       <!-- Filter Sidebar -->
       <aside>
-        <form method="GET" action="shop.php" style="background:var(--white); padding:2rem; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
+        <form method="GET" action="shop.php" style="background:var(--bg-card); padding:2rem; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:0 4px 15px rgba(0,0,0,0.03);">
           
-          <h3 style="font-size:1.2rem; margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem;">
+          <h3 style="font-size:1.2rem; margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; color:var(--text-primary);">
             <i class="fa-solid fa-sliders" style="color:var(--primary-gold);"></i> Refine Vault
           </h3>
 
@@ -160,15 +160,15 @@ $categories_list = $pdo->query("SELECT * FROM categories WHERE status = 1")->fet
       <main>
         
         <!-- Sorting Bar -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; background:var(--secondary-bg); padding:1rem 1.5rem; border-radius:var(--radius-sm);">
-          <div style="font-size:0.9rem; color:#666;">
-            Showing <strong><?php echo count($products); ?></strong> of <strong><?php echo $total_items; ?></strong> master creations
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; background:var(--bg-secondary); padding:1rem 1.5rem; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <div style="font-size:0.9rem; color:var(--text-secondary);">
+            Showing <strong style="color:var(--text-primary);"><?php echo count($products); ?></strong> of <strong style="color:var(--text-primary);"><?php echo $total_items; ?></strong> master creations
           </div>
           <form method="GET" action="shop.php" style="display:flex; align-items:center; gap:0.5rem;">
             <input type="hidden" name="category" value="<?php echo $selected_category; ?>">
             <input type="hidden" name="metal" value="<?php echo $selected_metal; ?>">
             <input type="hidden" name="gemstone" value="<?php echo $selected_gemstone; ?>">
-            <label style="font-size:0.85rem; font-weight:600;">Sort By:</label>
+            <label style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">Sort By:</label>
             <select name="sort" class="form-control" onchange="this.form.submit()" style="padding:0.5rem 1rem; width:auto;">
               <option value="newest" <?php echo $sort_by === 'newest' ? 'selected' : ''; ?>>Newest Additions</option>
               <option value="price_asc" <?php echo $sort_by === 'price_asc' ? 'selected' : ''; ?>>Price: Low to High</option>
@@ -230,10 +230,10 @@ $categories_list = $pdo->query("SELECT * FROM categories WHERE status = 1")->fet
           <?php endif; ?>
 
         <?php else: ?>
-          <div style="text-align:center; padding:5rem 2rem; background:var(--secondary-bg); border-radius:var(--radius-md);">
+          <div style="text-align:center; padding:5rem 2rem; background:var(--bg-secondary); border-radius:var(--radius-md); border:1px solid var(--border-color);">
             <i class="fa-solid fa-gem fa-3x" style="color:var(--primary-gold); margin-bottom:1rem;"></i>
-            <h3>No Jewelry Found</h3>
-            <p style="color:#888; margin-bottom:1.5rem;">Try relaxing your filter parameters to view other pieces.</p>
+            <h3 style="color:var(--text-primary);">No Jewelry Found</h3>
+            <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Try relaxing your filter parameters to view other pieces.</p>
             <a href="shop.php" class="btn btn-primary">Clear All Filters</a>
           </div>
         <?php endif; ?>
