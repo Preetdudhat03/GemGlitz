@@ -91,42 +91,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
         <div class="form-group">
           <label class="form-label">First Name *</label>
-          <input type="text" name="first_name" value="<?php echo sanitize($_POST['first_name'] ?? ''); ?>" placeholder="Sophia" class="form-control" required>
+          <input type="text" name="first_name" value="<?php echo sanitize($_POST['first_name'] ?? ''); ?>" placeholder="Keya" class="form-control" required>
         </div>
         <div class="form-group">
           <label class="form-label">Last Name *</label>
-          <input type="text" name="last_name" value="<?php echo sanitize($_POST['last_name'] ?? ''); ?>" placeholder="Vanderbilt" class="form-control" required>
+          <input type="text" name="last_name" value="<?php echo sanitize($_POST['last_name'] ?? ''); ?>" placeholder="Dudhat" class="form-control" required>
         </div>
       </div>
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
         <div class="form-group">
           <label class="form-label">Email Address *</label>
-          <input type="email" name="email" value="<?php echo sanitize($_POST['email'] ?? ''); ?>" placeholder="sophia@domain.com" class="form-control" required>
+          <input type="email" name="email" value="<?php echo sanitize($_POST['email'] ?? ''); ?>" placeholder="keyadudhat@gmail.com" class="form-control" required>
         </div>
         <div class="form-group">
           <label class="form-label">Phone Number</label>
-          <input type="text" name="phone" value="<?php echo sanitize($_POST['phone'] ?? ''); ?>" placeholder="+1 212 555 0148" class="form-control">
+          <input type="text" name="phone" value="<?php echo sanitize($_POST['phone'] ?? ''); ?>" placeholder="+91 98765 43210" class="form-control">
         </div>
       </div>
 
       <div class="form-group">
         <label class="form-label">Primary Delivery Address</label>
-        <input type="text" name="address" value="<?php echo sanitize($_POST['address'] ?? ''); ?>" placeholder="432 Park Avenue, Apt 64A" class="form-control">
+        <input type="text" name="address" value="<?php echo sanitize($_POST['address'] ?? ''); ?>" placeholder="Shri Bhagubhai Mafatlal Polytechnic, Vile Parle (W)" class="form-control">
       </div>
 
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
         <div class="form-group">
           <label class="form-label">City</label>
-          <input type="text" name="city" value="<?php echo sanitize($_POST['city'] ?? ''); ?>" placeholder="New York" class="form-control">
+          <input type="text" name="city" value="<?php echo sanitize($_POST['city'] ?? ''); ?>" placeholder="Mumbai" class="form-control">
         </div>
         <div class="form-group">
           <label class="form-label">State</label>
-          <input type="text" name="state" value="<?php echo sanitize($_POST['state'] ?? ''); ?>" placeholder="NY" class="form-control">
+          <input type="text" name="state" value="<?php echo sanitize($_POST['state'] ?? ''); ?>" placeholder="Maharashtra" class="form-control">
         </div>
         <div class="form-group">
           <label class="form-label">ZIP Code</label>
-          <input type="text" name="zip" value="<?php echo sanitize($_POST['zip'] ?? ''); ?>" placeholder="10022" class="form-control">
+          <input type="text" name="zip" value="<?php echo sanitize($_POST['zip'] ?? ''); ?>" placeholder="400056" class="form-control">
         </div>
       </div>
 
