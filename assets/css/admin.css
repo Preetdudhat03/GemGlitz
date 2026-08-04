@@ -1,0 +1,171 @@
+/* ==========================================================================
+   GemGlitz - Admin Panel Layout & Components CSS
+   ========================================================================== */
+
+:root {
+  --admin-sidebar-w: 260px;
+  --admin-bg: #F4F6F8;
+  --admin-sidebar-bg: #111111;
+  --admin-card-bg: #FFFFFF;
+  --admin-border: #E3E8EE;
+  --admin-primary: #C8A96A;
+  --admin-text: #2D3748;
+}
+
+body.admin-body {
+  background-color: var(--admin-bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--admin-text);
+  margin: 0;
+}
+
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+  width: var(--admin-sidebar-w);
+  background: var(--admin-sidebar-bg);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  z-index: 100;
+  border-right: 1px solid rgba(200, 169, 106, 0.2);
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.5rem;
+  border-bottom: 1px solid #222222;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--admin-primary);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-menu {
+  padding: 1.5rem 0;
+  flex-grow: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.8rem;
+  color: #AAAAAA;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: rgba(200, 169, 106, 0.15);
+  color: var(--admin-primary);
+  border-left: 4px solid var(--admin-primary);
+}
+
+/* Admin Main Content Area */
+.admin-main {
+  margin-left: var(--admin-sidebar-w);
+  flex-grow: 1;
+  padding: 2rem 2.5rem;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  background: #FFFFFF;
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Metric Cards */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-val {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111111;
+  margin-top: 0.3rem;
+}
+
+.metric-icon {
+  width: 50px; height: 50px;
+  border-radius: 12px;
+  background: rgba(200, 169, 106, 0.12);
+  color: var(--admin-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+/* Data Tables */
+.table-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border: 1px solid var(--admin-border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--admin-border);
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  background: #FAFAFA;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #718096;
+}
+
+.badge-status {
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-success { background: #E6F4EA; color: #137333; }
+.badge-warning { background: #FEF7E0; color: #B06000; }
+.badge-info { background: #E8F0FE; color: #1A73E8; }
+.badge-danger { background: #FCE8E6; color: #C5221F; }
