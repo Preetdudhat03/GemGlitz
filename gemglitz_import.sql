@@ -1,9 +1,30 @@
 -- GemGlitz Luxury Jewelry E-Commerce Database Import Script
 -- 1-Click Import File for phpMyAdmin / MySQL / MariaDB (XAMPP)
 
-SET FOREIGN_KEY_CHECKS = 0;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 
+-- Drop Child Tables First to Prevent Foreign Key Dependency Conflicts
+DROP TABLE IF EXISTS `order_items`;
+DROP TABLE IF EXISTS `payments`;
+DROP TABLE IF EXISTS `tracking`;
+DROP TABLE IF EXISTS `reviews`;
+DROP TABLE IF EXISTS `wishlist`;
+DROP TABLE IF EXISTS `cart`;
+DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `products`;
+
+-- Drop Parent & Standalone Tables
+DROP TABLE IF EXISTS `categories`;
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `coupons`;
+DROP TABLE IF EXISTS `contact`;
+DROP TABLE IF EXISTS `newsletter`;
+
+-- ---------------------------------------------------------
+-- CREATE TABLES
+-- ---------------------------------------------------------
+
 CREATE TABLE `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `first_name` VARCHAR(50) NOT NULL,
@@ -19,7 +40,6 @@ CREATE TABLE `users` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
@@ -30,7 +50,6 @@ CREATE TABLE `categories` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `category_id` INT NOT NULL,
@@ -55,7 +74,6 @@ CREATE TABLE `products` (
   FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `wishlist`;
 CREATE TABLE `wishlist` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `user_id` INT NOT NULL,
@@ -66,7 +84,6 @@ CREATE TABLE `wishlist` (
   FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `user_id` INT DEFAULT NULL,
@@ -77,7 +94,6 @@ CREATE TABLE `cart` (
   FOREIGN KEY (`product_id`) REFERENCES `products`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `order_number` VARCHAR(50) UNIQUE NOT NULL,
@@ -101,7 +117,6 @@ CREATE TABLE `orders` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `order_items`;
 CREATE TABLE `order_items` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `order_id` INT NOT NULL,
@@ -113,7 +128,6 @@ CREATE TABLE `order_items` (
   FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `payments`;
 CREATE TABLE `payments` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `order_id` INT NOT NULL,
@@ -125,7 +139,6 @@ CREATE TABLE `payments` (
   FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `tracking`;
 CREATE TABLE `tracking` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `order_id` INT NOT NULL,
@@ -138,7 +151,6 @@ CREATE TABLE `tracking` (
   FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE `reviews` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `product_id` INT NOT NULL,
@@ -152,7 +164,6 @@ CREATE TABLE `reviews` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `coupons`;
 CREATE TABLE `coupons` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `code` VARCHAR(50) UNIQUE NOT NULL,
@@ -164,7 +175,6 @@ CREATE TABLE `coupons` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
@@ -175,25 +185,20 @@ CREATE TABLE `contact` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `newsletter`;
 CREATE TABLE `newsletter` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `email` VARCHAR(100) UNIQUE NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- ---------------------------------------------------------
+-- SEED DATA
+-- ---------------------------------------------------------
 
--- =========================================================
--- SEED DATA WITH PRODUCT PICTURES
--- =========================================================
-
--- USERS
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address`, `city`, `state`, `zip`, `role`) VALUES
 (1, 'GemGlitz', 'Admin', 'admin@gemglitz.com', '$2y$10$frjvNhekaAG3dnNMTwBDnumPY86BG1JohWE8BuEtkR4JG9P.EioKm', '+1 800 555 0199', '740 5th Avenue, Suite 1200', 'New York', 'NY', '10019', 'admin'),
 (2, 'Sophia', 'Vanderbilt', 'customer@gemglitz.com', '$2y$10$qlDl/IVTVhHBwyGXDbwctucKB.FbN.tlOJlPXMM3c6euv4.GoJ9tG', '+1 212 555 0148', '432 Park Avenue, Apt 64A', 'New York', 'NY', '10022', 'customer');
 
--- CATEGORIES
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `image_url`) VALUES
 (1, 'Diamond Rings', 'diamond-rings', 'Exquisite handcrafted solitaire & halo diamond rings forged in 18K gold and platinum.', 'ring_cat.jpg'),
 (2, 'Luxury Necklaces', 'luxury-necklaces', 'Statement gold pendants, diamond chokers, and royal sapphire necklaces.', 'necklace_cat.jpg'),
@@ -202,7 +207,6 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `image_url`) VALU
 (5, 'Luxury Watches', 'luxury-watches', 'Timeless mechanical horology featuring Swiss movements and diamond dials.', 'watch_cat.jpg'),
 (6, 'High Solitaires', 'high-solitaires', 'Rare GIA certified colorless diamond single stone creations.', 'solitaire_cat.jpg');
 
--- PRODUCTS WITH HIGH RESOLUTION PICTURES
 INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `sku`, `short_description`, `description`, `price`, `discount_price`, `stock`, `metal_type`, `gemstone_type`, `is_featured`, `is_bestseller`, `is_trending`, `main_image`, `gallery_images`, `rating`, `review_count`) VALUES
 (1, 1, 'The Empress Royal Solitaire Ring', 'empress-royal-solitaire-ring', 'GG-RNG-001', '3.5 Carat D-Flawless Cushion Diamond Ring in 18K Yellow Gold', 'Forged by our master jewelers in Paris, The Empress Ring features a transcendent 3.5 carat D-Flawless cushion-cut center diamond enveloped by micro-pave diamonds along an 18K yellow gold band. A statement of pure luxury.', 12500.00, 11200.00, 5, '18K Yellow Gold', 'Diamond', 1, 1, 1, 'ring_1.jpg', '["ring_1.jpg", "ring_2.jpg"]', 5.00, 12),
 
@@ -228,29 +232,26 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `sku`, `short_descr
 
 (12, 6, 'Ocean Heart Blue Diamond Solitaire', 'ocean-heart-blue-diamond-solitaire', 'GG-SLT-002', 'Rare 3.0 CT Fancy Deep Blue Diamond in Platinum', 'Extremely rare natural blue heart-shaped diamond surrounded by micropave platinum setting. A collector item of extraordinary distinction.', 85000.00, NULL, 1, 'Platinum', 'Diamond', 1, 0, 1, 'solitaire_2.jpg', '["solitaire_2.jpg", "solitaire_1.jpg"]', 5.00, 3);
 
--- COUPONS
 INSERT INTO `coupons` (`id`, `code`, `discount_percent`, `min_order_amount`, `max_discount`, `expiry_date`, `status`) VALUES
 (1, 'LUXURY10', 10.00, 1000.00, 2000.00, '2030-12-31', 1),
 (2, 'GEMGLITZ20', 20.00, 5000.00, 5000.00, '2030-12-31', 1),
 (3, 'WELCOME100', 5.00, 500.00, 500.00, '2030-12-31', 1);
 
--- ORDERS
 INSERT INTO `orders` (`id`, `order_number`, `user_id`, `total_amount`, `discount_amount`, `shipping_fee`, `tax_amount`, `grand_total`, `payment_method`, `payment_status`, `order_status`, `shipping_name`, `shipping_email`, `shipping_phone`, `shipping_address`, `shipping_city`, `shipping_zip`, `created_at`) VALUES
 (1, 'GG-ORD-88291', 2, 12500.00, 1250.00, 0.00, 562.50, 11812.50, 'Credit Card', 'Paid', 'Shipped', 'Sophia Vanderbilt', 'customer@gemglitz.com', '+1 212 555 0148', '432 Park Avenue, Apt 64A', 'New York', '10022', '2026-08-01 10:15:00');
 
--- ORDER ITEMS
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_name`, `price`, `quantity`, `total`) VALUES
 (1, 1, 1, 'The Empress Royal Solitaire Ring', 12500.00, 1, 12500.00);
 
--- PAYMENTS
 INSERT INTO `payments` (`id`, `order_id`, `transaction_id`, `payment_method`, `amount`, `status`, `created_at`) VALUES
 (1, 1, 'TXN_GG_992104882', 'Credit Card', 11812.50, 'Success', '2026-08-01 10:15:20');
 
--- TRACKING
 INSERT INTO `tracking` (`id`, `order_id`, `status_title`, `description`, `courier_name`, `tracking_number`, `estimated_delivery`) VALUES
 (1, 1, 'In Transit', 'Package has left the master vault and is en route via armored transport.', 'Royal Gold Express', 'RGE-99021884-NY', '2026-08-06');
 
--- REVIEWS
 INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `rating`, `review_title`, `comment`, `status`, `created_at`) VALUES
 (1, 1, 2, 5, 'Unparalleled Perfection!', 'The Empress Ring exceeded every expectation. The brilliance under light is breathtaking and the custom packaging felt like opening a royal crown.', 'approved', '2026-08-02 14:22:00'),
 (2, 3, 2, 5, 'Exquisite Craftsmanship', 'The pear diamond drop captures light from every angle. GemGlitz white-glove delivery was flawless.', 'approved', '2026-08-03 09:10:00');
+
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
