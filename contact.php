@@ -75,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div>
         <div style="margin-bottom:2.5rem;">
           <h3 style="font-size:1.4rem; margin-bottom:1rem;">Flagship Vault Atelier</h3>
-          <p style="color:#666; font-size:0.95rem; margin-bottom:1.5rem; line-height:1.7;">
-            Visit our private flagship salon on 5th Avenue, New York, or schedule a virtual appointment with a master gemologist.
+          <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.5rem; line-height:1.7;">
+            Visit our private flagship salon at Shri Bhagubhai Mafatlal Polytechnic, Vile Parle (W), Mumbai, or schedule a virtual appointment with a master gemologist.
           </p>
 
           <div style="display:flex; flex-direction:column; gap:1.25rem;">
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </div>
               <div>
                 <strong style="display:block; font-size:0.9rem;">Atelier Address</strong>
-                <span style="font-size:0.85rem; color:#777;">740 5th Avenue, Suite 1200, New York, NY 10019</span>
+                <span style="font-size:0.85rem; color:var(--text-secondary);">Shri Bhagubhai Mafatlal Polytechnic, Vile Parle (W), Mumbai, Maharashtra 400056, India</span>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </div>
               <div>
                 <strong style="display:block; font-size:0.9rem;">VIP Hotline</strong>
-                <span style="font-size:0.85rem; color:#777;">+1 (800) 555-0199 / +1 (212) 555-0148</span>
+                <span style="font-size:0.85rem; color:var(--text-secondary);">+91 98765 43210 / +1 (800) 555-0199</span>
               </div>
             </div>
 
@@ -106,18 +106,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </div>
               <div>
                 <strong style="display:block; font-size:0.9rem;">Concierge Email</strong>
-                <span style="font-size:0.85rem; color:#777;">concierge@gemglitz.com</span>
+                <span style="font-size:0.85rem; color:var(--text-secondary);">concierge@gemglitz.com</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Google Map Placeholder Graphic -->
-        <div style="background:var(--dark-card); height:220px; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; color:var(--primary-gold); text-align:center;">
+        <div style="background:var(--bg-card); height:220px; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; color:var(--primary-gold); text-align:center;">
           <div>
             <i class="fa-solid fa-map-location-dot fa-2x" style="margin-bottom:0.5rem;"></i>
-            <div style="font-weight:600; font-size:0.95rem;">5th Avenue Flagship Location Map</div>
-            <span style="font-size:0.75rem; color:#888;">Interactive GPS map loaded</span>
+            <div style="font-weight:600; font-size:0.95rem; color:var(--text-primary);">Vile Parle Atelier Location Map</div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Interactive GPS map loaded (Mumbai, India)</span>
           </div>
         </div>
 
