@@ -43,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="contact.php">
           <div class="form-group">
             <label class="form-label">Full Name *</label>
-            <input type="text" name="name" class="form-control" placeholder="Sophia Vanderbilt" required>
+            <input type="text" name="name" class="form-control" placeholder="Keya Dudhat" required>
           </div>
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
             <div class="form-group">
               <label class="form-label">Email Address *</label>
-              <input type="email" name="email" class="form-control" placeholder="sophia@domain.com" required>
+              <input type="email" name="email" class="form-control" placeholder="keyadudhat@gmail.com" required>
             </div>
             <div class="form-group">
               <label class="form-label">Phone Number</label>
