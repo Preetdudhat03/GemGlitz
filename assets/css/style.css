@@ -1,37 +1,48 @@
 /* ==========================================================================
-   GemGlitz - Haute Joaillerie Minimalist Master CSS Design System
+   GemGlitz - Haute Joaillerie High-Contrast Master CSS Design System
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
   --primary-gold: #C8A96A;
   --accent-gold: #D4AF37;
   --gold-subtle: rgba(200, 169, 106, 0.15);
-  --dark-bg: #0A0A0A;
-  --dark-card: #121212;
-  --dark-border: #222222;
-  --white: #FFFFFF;
-  --secondary-bg: #FAFAFA;
-  --gray-text: #666666;
-  --light-gray: #AAAAAA;
-  --border-color: #EEEEEE;
+
+  /* Semantic Theme Tokens - Light Mode */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9F9F9;
+  --bg-card: #FFFFFF;
+  --bg-thumb: #F4F4F4;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --border-color: #E5E5E5;
+
+  /* Static Utilities */
+  --pure-white: #FFFFFF;
+  --pure-dark: #0A0A0A;
   --success: #2E7D32;
   --error: #D32F2F;
+
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.3s ease;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
 }
 
-/* Dark Mode Overrides */
+/* Dark Mode Tokens Override - High Contrast Crisp White Text */
 body.dark-mode {
-  --secondary-bg: #141414;
-  --white: #0A0A0A;
-  --gray-text: #AAAAAA;
-  --border-color: #222222;
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #121212;
+  --bg-card: #181818;
+  --bg-thumb: #1D1D1D;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CCCCCC;
+  --text-muted: #999999;
+  --border-color: #282828;
 }
 
 /* Global Reset */
@@ -48,15 +59,11 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--white);
-  color: var(--dark-bg);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-mode {
-  color: #F0F0F0;
 }
 
 a {
@@ -75,22 +82,13 @@ img {
   display: block;
 }
 
-/* Typography - Minimalist High Contrast */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 400;
-  line-height: 1.2;
-  color: var(--dark-bg);
+  line-height: 1.25;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
-}
-
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4, 
-body.dark-mode h5, 
-body.dark-mode h6 {
-  color: var(--white);
 }
 
 .section-subtitle {
@@ -108,6 +106,7 @@ body.dark-mode h6 {
   font-size: 2.4rem;
   font-weight: 400;
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .gold-text {
@@ -123,7 +122,7 @@ body.dark-mode h6 {
 }
 
 .section-padding {
-  padding: 6.5rem 0;
+  padding: 6rem 0;
 }
 
 .text-center { text-align: center; }
@@ -147,50 +146,35 @@ body.dark-mode h6 {
 }
 
 .btn-primary {
-  background: var(--dark-bg);
-  color: var(--white);
-  border: 1px solid var(--dark-bg);
-}
-
-body.dark-mode .btn-primary {
-  background: var(--primary-gold);
-  color: #000;
-  border-color: var(--primary-gold);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
 }
 
 .btn-primary:hover {
   background: var(--primary-gold);
-  color: #000;
+  color: #000000;
   border-color: var(--primary-gold);
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--dark-bg);
-  color: var(--dark-bg);
-}
-
-body.dark-mode .btn-outline {
-  border-color: var(--primary-gold);
-  color: var(--primary-gold);
+  border: 1px solid var(--text-primary);
+  color: var(--text-primary);
 }
 
 .btn-outline:hover {
-  background: var(--dark-bg);
-  color: var(--white);
+  background: var(--primary-gold);
+  color: #000000;
+  border-color: var(--primary-gold);
   transform: translateY(-2px);
 }
 
-body.dark-mode .btn-outline:hover {
-  background: var(--primary-gold);
-  color: #000;
-}
-
 .btn-dark {
-  background: var(--dark-bg);
-  color: var(--white);
-  border: 1px solid var(--dark-border);
+  background: #111111;
+  color: #FFFFFF;
+  border: 1px solid #333333;
 }
 
 .btn-dark:hover {
@@ -208,23 +192,19 @@ body.dark-mode .btn-outline:hover {
   text-align: center;
   padding: 0.55rem 1rem;
   font-weight: 400;
-  border-bottom: 1px solid rgba(200, 169, 106, 0.15);
+  border-bottom: 1px solid rgba(200, 169, 106, 0.2);
 }
 
-/* Header & Navbar - Clean Minimalist Layout */
+/* Header & Navbar - High Contrast Crisp Text */
 .navbar-sticky {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: var(--white);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
-}
-
-body.dark-mode .navbar-sticky {
-  background: var(--dark-bg);
 }
 
 .nav-container {
@@ -235,7 +215,7 @@ body.dark-mode .navbar-sticky {
   gap: 1.5rem;
 }
 
-/* Brand Logo Styling */
+/* Brand Logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -244,12 +224,10 @@ body.dark-mode .navbar-sticky {
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 4px;
-  color: var(--dark-bg);
+  color: var(--text-primary);
   white-space: nowrap;
   flex-shrink: 0;
 }
-
-body.dark-mode .brand-logo { color: var(--white); }
 
 .brand-logo img {
   height: 32px;
@@ -271,10 +249,8 @@ body.dark-mode .brand-logo { color: var(--white); }
   text-transform: uppercase;
   position: relative;
   padding: 0.4rem 0;
-  color: var(--dark-bg);
+  color: var(--text-primary);
 }
-
-body.dark-mode .nav-link { color: var(--white); }
 
 .nav-link::after {
   content: '';
@@ -298,7 +274,7 @@ body.dark-mode .nav-link { color: var(--white); }
 }
 
 .action-icon {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   position: relative;
   cursor: pointer;
   width: 36px; height: 36px;
@@ -307,12 +283,10 @@ body.dark-mode .nav-link { color: var(--white); }
   align-items: center;
   justify-content: center;
   transition: var(--transition);
-  color: var(--dark-bg);
+  color: var(--text-primary);
   background: transparent;
   border: none;
 }
-
-body.dark-mode .action-icon { color: var(--white); }
 
 .action-icon:hover {
   color: var(--primary-gold);
@@ -322,7 +296,7 @@ body.dark-mode .action-icon { color: var(--white); }
   position: absolute;
   top: -2px; right: -2px;
   background: var(--primary-gold);
-  color: #000;
+  color: #000000;
   font-size: 0.65rem;
   font-weight: 600;
   width: 16px; height: 16px;
@@ -341,18 +315,13 @@ body.dark-mode .action-icon { color: var(--white); }
   position: absolute;
   top: 120%; right: 0;
   width: 200px;
-  background: var(--white);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   padding: 0.5rem 0;
   display: none;
   flex-direction: column;
   z-index: 1010;
-}
-
-body.dark-mode .profile-dropdown {
-  background: var(--dark-card);
-  border-color: var(--dark-border);
 }
 
 .profile-dropdown-container:hover .profile-dropdown {
@@ -365,26 +334,24 @@ body.dark-mode .profile-dropdown {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--dark-bg);
+  color: var(--text-primary);
 }
 
-body.dark-mode .dropdown-item { color: var(--white); }
-
 .dropdown-item:hover {
-  background: rgba(200, 169, 106, 0.08);
+  background: var(--gold-subtle);
   color: var(--primary-gold);
 }
 
-/* Hero Section - Minimalist Chic */
+/* Hero Section */
 .hero-section {
   position: relative;
   min-height: 82vh;
   background: linear-gradient(180deg, rgba(10,10,10,0.92), rgba(5,5,5,0.97)), url('../images/hero_bg.svg') center/cover no-repeat;
   display: flex;
   align-items: center;
-  color: var(--white);
+  color: #FFFFFF;
   overflow: hidden;
-  border-bottom: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .hero-content {
@@ -395,14 +362,14 @@ body.dark-mode .dropdown-item { color: var(--white); }
 .hero-title {
   font-size: 3.8rem;
   font-weight: 300;
-  color: var(--white);
+  color: #FFFFFF;
   margin-bottom: 1.5rem;
   line-height: 1.15;
 }
 
 .hero-desc {
   font-size: 1rem;
-  color: #AAAAAA;
+  color: #CCCCCC;
   margin-bottom: 2.5rem;
   font-weight: 300;
   line-height: 1.8;
@@ -414,7 +381,7 @@ body.dark-mode .dropdown-item { color: var(--white); }
   flex-wrap: wrap;
 }
 
-/* Grid Layout Systems */
+/* Grid Layouts */
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -427,12 +394,12 @@ body.dark-mode .dropdown-item { color: var(--white); }
   gap: 2rem;
 }
 
-/* Minimalist Category Card */
+/* Category Card */
 .category-card {
   position: relative;
   border: 1px solid var(--border-color);
   overflow: hidden;
-  background: var(--dark-card);
+  background: var(--bg-card);
   height: 380px;
   display: flex;
   flex-direction: column;
@@ -461,7 +428,7 @@ body.dark-mode .dropdown-item { color: var(--white); }
 }
 
 .category-name {
-  color: var(--white);
+  color: #FFFFFF;
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 0.4rem;
@@ -478,20 +445,15 @@ body.dark-mode .dropdown-item { color: var(--white); }
   gap: 0.5rem;
 }
 
-/* Minimalist Product Card */
+/* Product Card */
 .product-card {
-  background: var(--white);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   overflow: hidden;
   transition: var(--transition);
   position: relative;
   display: flex;
   flex-direction: column;
-}
-
-body.dark-mode .product-card {
-  background: var(--dark-card);
-  border-color: var(--dark-border);
 }
 
 .product-card:hover {
@@ -502,16 +464,12 @@ body.dark-mode .product-card {
 .product-thumb {
   position: relative;
   height: 300px;
-  background: #FAFAFA;
+  background: var(--bg-thumb);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-}
-
-body.dark-mode .product-thumb {
-  background: #141414;
 }
 
 .product-thumb img {
@@ -528,7 +486,7 @@ body.dark-mode .product-thumb {
 .product-badge {
   position: absolute;
   top: 1rem; left: 1rem;
-  background: var(--dark-bg);
+  background: #000000;
   color: var(--primary-gold);
   font-size: 0.65rem;
   font-weight: 500;
@@ -553,8 +511,8 @@ body.dark-mode .product-thumb {
 .icon-btn-rounded {
   width: 36px; height: 36px;
   border-radius: 50%;
-  background: var(--white);
-  color: var(--dark-bg);
+  background: var(--bg-card);
+  color: var(--text-primary);
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
@@ -564,9 +522,9 @@ body.dark-mode .product-thumb {
 }
 
 .icon-btn-rounded:hover {
-  background: var(--dark-bg);
+  background: #000000;
   color: var(--primary-gold);
-  border-color: var(--dark-bg);
+  border-color: #000000;
 }
 
 .product-details {
@@ -580,7 +538,7 @@ body.dark-mode .product-thumb {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--gray-text);
+  color: var(--text-secondary);
   margin-bottom: 0.4rem;
 }
 
@@ -591,6 +549,7 @@ body.dark-mode .product-thumb {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--text-primary);
 }
 
 .product-rating {
@@ -620,7 +579,7 @@ body.dark-mode .product-thumb {
 .price-old {
   font-size: 0.85rem;
   text-decoration: line-through;
-  color: var(--light-gray);
+  color: var(--text-muted);
 }
 
 /* Glassmorphism Auth Forms */
@@ -636,10 +595,10 @@ body.dark-mode .product-thumb {
 .glass-card {
   width: 100%;
   max-width: 500px;
-  background: rgba(18, 18, 18, 0.9);
-  border: 1px solid var(--dark-border);
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid #282828;
   padding: 3rem;
-  color: #FFF;
+  color: #FFFFFF;
 }
 
 .form-group {
@@ -653,11 +612,10 @@ body.dark-mode .product-thumb {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 0.4rem;
-  color: var(--dark-bg);
+  color: var(--text-primary);
 }
 
-body.dark-mode .form-label,
-.glass-card .form-label { color: #DDD; }
+.glass-card .form-label { color: #DDDDDD; }
 
 .form-control {
   width: 100%;
@@ -665,20 +623,31 @@ body.dark-mode .form-label,
   font-family: var(--font-body);
   font-size: 0.9rem;
   border: 1px solid var(--border-color);
-  background: #FFF;
+  background: var(--bg-card);
+  color: var(--text-primary);
   outline: none;
   transition: var(--transition);
 }
 
-body.dark-mode .form-control,
 .glass-card .form-control {
   background: #181818;
-  border-color: #2A2A2A;
-  color: #FFF;
+  border-color: #333333;
+  color: #FFFFFF;
 }
 
 .form-control:focus {
   border-color: var(--primary-gold);
+}
+
+/* Select Form Dropdown High Contrast Fix */
+select.form-control {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+select.form-control option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
 }
 
 /* Modals */
@@ -686,7 +655,7 @@ body.dark-mode .form-control,
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   backdrop-filter: blur(8px);
   z-index: 2000;
   display: none;
@@ -698,7 +667,8 @@ body.dark-mode .form-control,
 .modal-overlay.active { display: flex; }
 
 .modal-content {
-  background: var(--white);
+  background: var(--bg-card);
+  color: var(--text-primary);
   max-width: 850px;
   width: 100%;
   max-height: 90vh;
@@ -708,17 +678,12 @@ body.dark-mode .form-control,
   border: 1px solid var(--border-color);
 }
 
-body.dark-mode .modal-content {
-  background: var(--dark-card);
-  color: var(--white);
-}
-
 .modal-close {
   position: absolute;
   top: 1.5rem; right: 1.5rem;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--gray-text);
+  color: var(--text-secondary);
 }
 
 /* Toast Notifications */
@@ -732,8 +697,8 @@ body.dark-mode .modal-content {
 }
 
 .toast {
-  background: var(--dark-bg);
-  color: var(--white);
+  background: #0A0A0A;
+  color: #FFFFFF;
   padding: 0.9rem 1.4rem;
   border-left: 3px solid var(--primary-gold);
   font-size: 0.85rem;
@@ -762,7 +727,7 @@ footer {
 }
 
 .footer-col h4 {
-  color: var(--white);
+  color: #FFFFFF;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -820,9 +785,9 @@ footer {
 .back-to-top {
   width: 40px; height: 40px;
   border-radius: 50%;
-  background: var(--dark-bg);
-  color: var(--primary-gold);
-  border: 1px solid var(--dark-border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
