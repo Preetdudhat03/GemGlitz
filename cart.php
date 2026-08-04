@@ -1,13 +1,10 @@
 <?php
-$page_title = "Shopping Bag & Cart";
-$page_desc = "Review your luxury jewelry items in your bag, apply promotional vault codes, and proceed to secure checkout.";
-require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/includes/navbar.php';
+require_once __DIR__ . '/includes/functions.php';
 
 $user_id = get_current_user_id();
 $session_id = get_session_id();
 
-// Handle Coupon application
+// Handle Coupon application before any HTML header output
 $applied_coupon = $_SESSION['coupon'] ?? null;
 if (isset($_POST['apply_coupon'])) {
     $coupon_code = strtoupper(sanitize($_POST['coupon_code'] ?? ''));
@@ -33,6 +30,11 @@ if (isset($_POST['remove_coupon'])) {
     header('Location: cart.php');
     exit;
 }
+
+$page_title = "Shopping Bag & Cart";
+$page_desc = "Review your luxury jewelry items in your bag, apply promotional vault codes, and proceed to secure checkout.";
+require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/navbar.php';
 
 // Fetch Cart Items
 if ($user_id) {
