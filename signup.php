@@ -133,14 +133,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
         <div class="form-group">
           <label class="form-label">Password *</label>
-          <input type="password" id="reg-password" name="password" oninput="checkPasswordStrength(this.value)" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" required>
+          <div style="position:relative;">
+            <input type="password" id="reg-password" name="password" oninput="checkPasswordStrength(this.value)" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" style="padding-right:2.8rem;" required>
+            <button type="button" onclick="togglePasswordVisibility('reg-password', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--primary-gold); cursor:pointer; font-size:1.1rem; padding:0;" title="Toggle Password Visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
           <div style="height:4px; background:#DDD; border-radius:2px; margin-top:0.4rem; overflow:hidden;">
             <div id="strength-bar" style="height:100%; width:0%; transition:all 0.3s ease;"></div>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Confirm Password *</label>
-          <input type="password" name="confirm_password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" required>
+          <div style="position:relative;">
+            <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" style="padding-right:2.8rem;" required>
+            <button type="button" onclick="togglePasswordVisibility('reg-confirm-password', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--primary-gold); cursor:pointer; font-size:1.1rem; padding:0;" title="Toggle Password Visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
         </div>
       </div>
 
