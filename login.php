@@ -80,7 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label class="form-label" style="margin-bottom:0;">Password</label>
           <a href="#" onclick="alert('Demo password reset link sent to your registered email.')" style="font-size:0.75rem; color:var(--primary-gold);">Forgot Password?</a>
         </div>
-        <input type="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" required>
+        <div style="position:relative;">
+          <input type="password" id="customer-pass" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="form-control" style="padding-right:2.8rem;" required>
+          <button type="button" onclick="togglePasswordVisibility('customer-pass', this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--primary-gold); cursor:pointer; font-size:1.1rem; padding:0;" title="Toggle Password Visibility">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
       </div>
 
       <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.8rem;">
