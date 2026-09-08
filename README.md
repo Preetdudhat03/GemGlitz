@@ -199,4 +199,4 @@ gemglitz/
 
 Developed for **GemGlitz Haute Joaillerie**. Built with pure craft and precision.
 
-*Crafted with excellence by Senior Full Stack Engineering Team.*
+*Crafted with excellence by Senior Full Stack Engineering Team.*. 
